@@ -55,6 +55,51 @@ public class Program
 
         static void MeniuStudent(Student student)
         {
+            while (true)
+            {
+                Console.WriteLine("\nMeniu Student:");
+                Console.WriteLine("1. Vizualizeaza notele");
+                Console.WriteLine("2. Inroleaza te la o disciplina");
+                Console.WriteLine("3. Calculeaza media anuala");
+                Console.WriteLine("4. Calculeaza media multianuala");
+                Console.WriteLine("5. Calculeaza media la o disciplina");
+                Console.WriteLine("6. Trimite contestatie");
+                Console.WriteLine("7. Vizualizeaza contestatii");
+                Console.WriteLine("0. Inapoi");
+
+                string optiune = Console.ReadLine();
+
+                switch (optiune)
+                {
+                    case "1":
+                    Console.Write("Anul (0 pentru toate): ");
+                    int an = int.Parse(Console.ReadLine());
+                    Console.Write("Semestrul (0 pentru toate): ");
+                    int semestru = int.Parse(Console.ReadLine());
+                    Console.Write("Disciplina (lasati gol pentru toate): ");
+                    string disciplina = Console.ReadLine();
+                    student.VizualizeazaNoteAnSemestruDisciplina(an, semestru, disciplina);
+                    break;
+                    
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
+                    case "6":
+                        break;
+                    case "7":
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        Console.WriteLine("Optiune invalida.");
+                        break;
+                }
+            }
         }
 
         static void MeniuProfesor(Catalog catalog)
@@ -99,9 +144,11 @@ public class Program
                         }
                         break;
                     case "2":
+                        
                         break;
+
                     case "0":
-                        break;
+                        return;
                     default:
                         Console.WriteLine("Optiune invalida.");
                         break;
@@ -109,5 +156,4 @@ public class Program
             }
         }
     }
-    
 }

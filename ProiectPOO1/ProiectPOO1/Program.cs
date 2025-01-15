@@ -7,8 +7,7 @@ public class Program
     static void Main(string[] args)
     {
         Catalog catalog = new Catalog();
-        while (true)
-        {
+       
             var student = new Student("Beto", 2);
             
             var disciplina = new Disciplina("Matematica", "Obligatorie", 1, 1);
@@ -22,7 +21,7 @@ public class Program
             var disciplina4 = new Disciplina("POO", "Facultativa", 1, 1);
 
             var disciplina5 = new Disciplina("PCDD", "Optionala", 2, 2);
-
+            while (true) {
 
             student.InroleazaDisciplina(disciplina);
             student.InroleazaDisciplina(disciplina2);
@@ -111,10 +110,15 @@ public class Program
                         Console.WriteLine($"Media la disciplina {disciplinaSelectata} este: {media:F2}");
                         break;
                     case "6":
+                        Console.Write("Disciplina pentru care trimiti contestatia: ");
+                        string disciplinaContestatie = Console.ReadLine();
+                        student.TrimiteContestatie(disciplinaContestatie);
+                        Console.WriteLine("Contestatia a fost trimisa.");
                         break;
                     case "7":
                         break;
                     case "0":
+                        student.VizualizeazaContestatii();
                         return;
                     default:
                         Console.WriteLine("Optiune invalida.");
@@ -152,7 +156,7 @@ public class Program
                                 double valoareNota = double.Parse(Console.ReadLine());
                                 disciplina.Note.Add(new Nota(tipNota, valoareNota));
                                 Console.WriteLine("Nota a fost adaugata.");
-                               
+                                student.PublicaNoteInCarnet(numeDisciplina);
                             }
                             
                             else
@@ -166,7 +170,24 @@ public class Program
                         }
                         break;
                     case "2":
-                        
+                        Console.Write("Numele studentului: ");
+                        numeStudent = Console.ReadLine();
+                        student = catalog.GasesteStudent(numeStudent);
+                        if (student != null)
+                        {
+                            Console.Write("Disciplina contestata: ");
+                            string disciplinaContestata = Console.ReadLine();
+                            Console.Write("Status (Aprobat/Respins): ");
+                            string status = Console.ReadLine();
+                            Console.Write("Rezultat: ");
+                            string rezultat = Console.ReadLine();
+                            student.ActualizeazaContestatie(disciplinaContestata, status, rezultat);
+                            Console.WriteLine("Contestatia a fost actualizata.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Studentul nu a fost gasit.");
+                        }
                         break;
 
                     case "0":

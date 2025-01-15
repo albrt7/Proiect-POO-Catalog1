@@ -20,4 +20,30 @@ public class Student
         Discipline.Add(disciplina);
     }
 
+    public void TrimiteContestatie(string disciplina)
+    {
+        Contestatii.Add(new Contestatie(disciplina));
+    }
+
+    public void ActualizeazaContestatie(string disciplina, string status, string rezultat)
+    {
+        var contestatie = Contestatii.FirstOrDefault(c => c.Disciplina == disciplina && c.Status == "In asteptare");
+        if (contestatie != null)
+        {
+            contestatie.Status = status;
+            contestatie.Rezultat = rezultat;
+        }
+    }
+
+    public void VizualizeazaContestatii()
+    {
+        Console.WriteLine("Lista contestatii:");
+        foreach (var contestatie in Contestatii)
+        {
+            Console.WriteLine($"Disciplina: {contestatie.Disciplina}, Status: {contestatie.Status}, Rezultat: {contestatie.Rezultat}");
+        }
+    }
+
+    
+    
 }

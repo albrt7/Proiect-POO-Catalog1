@@ -32,8 +32,26 @@ public class Student
         {
             contestatie.Status = status;
             contestatie.Rezultat = rezultat;
+            
+            if (status.Equals("Aprobat", StringComparison.OrdinalIgnoreCase))
+            {
+                var disciplinaGasita = Discipline.FirstOrDefault(d => d.Nume == disciplina);
+                if (disciplinaGasita != null && double.TryParse(rezultat, out double notaNoua))
+                {
+                    var notaExamen = disciplinaGasita.Note.FirstOrDefault(n => n.Tip == "Examen");
+                    if (notaExamen != null)
+                    {
+                        notaExamen.Valoare = notaNoua;
+                    }
+                    else
+                    {
+                        disciplinaGasita.Note.Add(new Nota("Examen", notaNoua));
+                    }
+                }
+            }
         }
     }
+
 
     public void VizualizeazaContestatii()
     {

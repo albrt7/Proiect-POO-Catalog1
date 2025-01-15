@@ -185,15 +185,15 @@ public class Program
                         break;
                     case "2":
                         Console.Write("Numele studentului: ");
-                        numeStudent = Console.ReadLine();
-                        student = catalog.GasesteStudent(numeStudent);
+                        string numeStudent1 = Console.ReadLine();
+                        student = catalog.GasesteStudent(numeStudent1);
                         if (student != null)
                         {
                             Console.Write("Disciplina contestata: ");
                             string disciplinaContestata = Console.ReadLine();
                             Console.Write("Status (Aprobat/Respins): ");
                             string status = Console.ReadLine();
-                            Console.Write("Rezultat: ");
+                            Console.Write("Rezultat (nota noua daca e aprobat, altfel lasati gol): ");
                             string rezultat = Console.ReadLine();
                             student.ActualizeazaContestatie(disciplinaContestata, status, rezultat);
                             Console.WriteLine("Contestatia a fost actualizata.");

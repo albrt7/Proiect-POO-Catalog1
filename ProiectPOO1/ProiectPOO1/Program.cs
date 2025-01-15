@@ -39,7 +39,7 @@ public class Program
             switch (optiune)
             {
                 case "1":
-                    MeniuStudent(student);
+                    MeniuStudent(student,catalog);
                     break;
                 case "2":
                     MeniuProfesor(catalog);
@@ -52,7 +52,8 @@ public class Program
             }
         }
 
-        static void MeniuStudent(Student student)
+        static void MeniuStudent(Student student, Catalog catalog)
+
         {
             while (true)
             {
@@ -95,14 +96,27 @@ public class Program
                         student.InroleazaDisciplina(disciplinaNoua);
                         Console.WriteLine("Te-ai inrolat la disciplina cu succes.");
                         break;
+                   
                     case "3":
                         Console.Write("Introdu anul pentru care doresti media: ");
-                        an = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"Media anuala: {student.CalculeazaMediaAnuala()}");
+                        if (int.TryParse(Console.ReadLine(), out int anCurent))
+                        {
+                            double mediaAnuala = student.CalculeazaMediaAnuala(anCurent);
+                            Console.WriteLine($"Media anuala pentru anul {anCurent} este: {mediaAnuala:F2}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Anul introdus nu este valid.");
+                        }
                         break;
+
                     case "4":
-                        Console.WriteLine($"Media multianuala: {student.CalculeazaMediaMultianuala()}");
+                        double mediaMultianuala = student.CalculeazaMediaMultianuala();
+                        Console.WriteLine($"Media multianuala este: {mediaMultianuala:F2}");
                         break;
+
+
+
                     case "5":
                         Console.Write("Introduceti numele disciplinei pentru care doriti să calculati media: ");
                         string disciplinaSelectata = Console.ReadLine();

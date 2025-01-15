@@ -44,13 +44,14 @@ public class Student
         }
     }
     
-    public double CalculeazaMediaAnuala()
+    public double CalculeazaMediaAnuala(int an)
     {
-        var disciplineObligatoriiSiOptionale = Discipline.Where(d => d.Tip != "Facultativa");
+        var disciplineObligatoriiSiOptionale = Discipline.Where(d => d.Tip != "Facultativa" && d.An == an);
         if (!disciplineObligatoriiSiOptionale.Any()) return 0;
 
         return disciplineObligatoriiSiOptionale.Average(d => d.CalculeazaMedia());
     }
+
 
     public double CalculeazaMediaMultianuala()
     {

@@ -7,29 +7,29 @@ public class Program
     static void Main(string[] args)
     {
         Catalog catalog = new Catalog();
-       
-            var student = new Student("Beto", 2);
-            
-            var disciplina = new Disciplina("Matematica", "Obligatorie", 1, 1);
 
-            var disciplina2 = new Disciplina("Fizica", "Obligatorie", 1, 2);
+        var student = new Student("Beto", 2);
 
-            var disciplina3 = new Disciplina("Programare", "Obligatorie", 2, 1);
-            
-            var disciplina6 = new Disciplina("ET", "Obligatorie", 2, 2);
+        var disciplina = new Disciplina("Matematica", "Obligatorie", 1, 1);
 
-            var disciplina4 = new Disciplina("POO", "Facultativa", 1, 1);
+        var disciplina2 = new Disciplina("Fizica", "Obligatorie", 1, 2);
 
-            var disciplina5 = new Disciplina("PCDD", "Optionala", 2, 2);
-            while (true) {
+        var disciplina3 = new Disciplina("Programare", "Obligatorie", 2, 1);
 
+        var disciplina6 = new Disciplina("ET", "Obligatorie", 2, 2);
+
+        var disciplina4 = new Disciplina("POO", "Facultativa", 1, 1);
+
+        var disciplina5 = new Disciplina("PCDD", "Optionala", 2, 2);
+        while (true)
+        {
             student.InroleazaDisciplina(disciplina);
             student.InroleazaDisciplina(disciplina2);
             student.InroleazaDisciplina(disciplina3);
             student.InroleazaDisciplina(disciplina6);
-            
+
             catalog.AdaugaStudent(student);
-            
+
             Console.WriteLine("Selecteaza perspectiva:");
             Console.WriteLine("1. Student");
             Console.WriteLine("2. Profesor");
@@ -39,7 +39,7 @@ public class Program
             switch (optiune)
             {
                 case "1":
-                    MeniuStudent(student,catalog);
+                    MeniuStudent(student, catalog);
                     break;
                 case "2":
                     MeniuProfesor(catalog);
@@ -72,15 +72,15 @@ public class Program
                 switch (optiune)
                 {
                     case "1":
-                    Console.Write("Anul (0 pentru toate): ");
-                    int an = int.Parse(Console.ReadLine());
-                    Console.Write("Semestrul (0 pentru toate): ");
-                    int semestru = int.Parse(Console.ReadLine());
-                    Console.Write("Disciplina (lasati gol pentru toate): ");
-                    string disciplina = Console.ReadLine();
-                    student.VizualizeazaNoteAnSemestruDisciplina(an, semestru, disciplina);
-                    break;
-                    
+                        Console.Write("Anul (0 pentru toate): ");
+                        int an = int.Parse(Console.ReadLine());
+                        Console.Write("Semestrul (0 pentru toate): ");
+                        int semestru = int.Parse(Console.ReadLine());
+                        Console.Write("Disciplina (lasati gol pentru toate): ");
+                        string disciplina = Console.ReadLine();
+                        student.VizualizeazaNoteAnSemestruDisciplina(an, semestru, disciplina);
+                        break;
+
                     case "2":
                         Console.Write("Introdu numele disciplinei: ");
                         string numeDisciplina = Console.ReadLine();
@@ -96,7 +96,7 @@ public class Program
                         student.InroleazaDisciplina(disciplinaNoua);
                         Console.WriteLine("Te-ai inrolat la disciplina cu succes.");
                         break;
-                   
+
                     case "3":
                         Console.Write("Introdu anul pentru care doresti media: ");
                         if (int.TryParse(Console.ReadLine(), out int anCurent))
@@ -108,13 +108,13 @@ public class Program
                         {
                             Console.WriteLine("Anul introdus nu este valid.");
                         }
+
                         break;
 
                     case "4":
                         double mediaMultianuala = student.CalculeazaMediaMultianuala();
                         Console.WriteLine($"Media multianuala este: {mediaMultianuala:F2}");
                         break;
-
 
 
                     case "5":
@@ -172,7 +172,7 @@ public class Program
                                 Console.WriteLine("Nota a fost adaugata.");
                                 student.PublicaNoteInCarnet(numeDisciplina);
                             }
-                            
+
                             else
                             {
                                 Console.WriteLine("Disciplina nu a fost gasita.");
@@ -182,6 +182,7 @@ public class Program
                         {
                             Console.WriteLine("Studentul nu a fost gasit.");
                         }
+
                         break;
                     case "2":
                         Console.Write("Numele studentului: ");
@@ -202,6 +203,7 @@ public class Program
                         {
                             Console.WriteLine("Studentul nu a fost gasit.");
                         }
+
                         break;
 
                     case "0":

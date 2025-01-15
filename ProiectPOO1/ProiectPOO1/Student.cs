@@ -78,7 +78,7 @@ public class Student
 
     public void VizualizeazaNoteAnSemestruDisciplina(int an, int semestru, string disciplina)
     {
-        var disciplineFiltrate = Discipline.Where(d => (an == 0 || d.An == an) && (semestru == 0 || d.Semestru == semestru) && (string.IsNullOrEmpty(disciplina) || d.Nume == disciplina));
+        var disciplineFiltrate = Discipline.Where(d => (an == 0 || d.An == an) && (semestru == 0 || d.Semestru == semestru) && (string.IsNullOrEmpty(disciplina) || d.Nume == disciplina)).Distinct();
 
         foreach (var disc in disciplineFiltrate)
         {

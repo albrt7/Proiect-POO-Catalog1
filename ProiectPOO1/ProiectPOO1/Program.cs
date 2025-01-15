@@ -82,12 +82,33 @@ public class Program
                     break;
                     
                     case "2":
+                        Console.Write("Introdu numele disciplinei: ");
+                        string numeDisciplina = Console.ReadLine();
+                        Console.Write("Introdu tipul disciplinei (Obligatorie/Optionala/Facultativa): ");
+                        string tipDisciplina = Console.ReadLine();
+                        Console.Write("Introdu anul disciplinei: ");
+                        int anDisciplina = int.Parse(Console.ReadLine());
+                        Console.Write("Introdu semestrul disciplinei: ");
+                        int semestruDisciplina = int.Parse(Console.ReadLine());
+
+                        var disciplinaNoua = new Disciplina(numeDisciplina, tipDisciplina, anDisciplina,
+                            semestruDisciplina);
+                        student.InroleazaDisciplina(disciplinaNoua);
+                        Console.WriteLine("Te-ai inrolat la disciplina cu succes.");
                         break;
                     case "3":
+                        Console.Write("Introdu anul pentru care doresti media: ");
+                        an = int.Parse(Console.ReadLine());
+                        Console.WriteLine($"Media anuala: {student.CalculeazaMediaAnuala()}");
                         break;
                     case "4":
+                        Console.WriteLine($"Media multianuala: {student.CalculeazaMediaMultianuala()}");
                         break;
                     case "5":
+                        Console.Write("Introduceti numele disciplinei pentru care doriti să calculati media: ");
+                        string disciplinaSelectata = Console.ReadLine();
+                        double media = student.CalculeazaMediaDisciplina(disciplinaSelectata);
+                        Console.WriteLine($"Media la disciplina {disciplinaSelectata} este: {media:F2}");
                         break;
                     case "6":
                         break;
@@ -131,6 +152,7 @@ public class Program
                                 double valoareNota = double.Parse(Console.ReadLine());
                                 disciplina.Note.Add(new Nota(tipNota, valoareNota));
                                 Console.WriteLine("Nota a fost adaugata.");
+                               
                             }
                             
                             else

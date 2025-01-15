@@ -21,7 +21,7 @@ public class Student
     }
 
     public void TrimiteContestatie(string disciplina)
-    {
+    {   
         Contestatii.Add(new Contestatie(disciplina));
     }
 

@@ -10,6 +10,7 @@ public class Program
         while (true)
         {
             var student = new Student("Beto", 2);
+            
             var disciplina = new Disciplina("Matematica", "Obligatorie", 1, 1);
 
             var disciplina2 = new Disciplina("Fizica", "Obligatorie", 1, 2);
@@ -58,6 +59,54 @@ public class Program
 
         static void MeniuProfesor(Catalog catalog)
         {
+            while (true)
+            {
+                Console.WriteLine("\nMeniu Profesor:");
+                Console.WriteLine("1. Noteaza un student");
+                Console.WriteLine("2. Rezolva contestatii");
+                Console.WriteLine("0. Inapoi");
+
+                string optiune = Console.ReadLine();
+                switch (optiune)
+                {
+                    case "1":
+                        Console.Write("Numele studentului: ");
+                        string numeStudent = Console.ReadLine();
+                        var student = catalog.GasesteStudent(numeStudent);
+                        if (student != null)
+                        {
+                            Console.Write("Disciplina: ");
+                            string numeDisciplina = Console.ReadLine();
+                            var disciplina = student.Discipline.FirstOrDefault(d => d.Nume == numeDisciplina);
+                            if (disciplina != null)
+                            {
+                                Console.Write("Tip nota (Activitate/Examen): ");
+                                string tipNota = Console.ReadLine();
+                                Console.Write("Valoare nota: ");
+                                double valoareNota = double.Parse(Console.ReadLine());
+                                disciplina.Note.Add(new Nota(tipNota, valoareNota));
+                                Console.WriteLine("Nota a fost adaugata.");
+                            }
+                            
+                            else
+                            {
+                                Console.WriteLine("Disciplina nu a fost gasita.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Studentul nu a fost gasit.");
+                        }
+                        break;
+                    case "2":
+                        break;
+                    case "0":
+                        break;
+                    default:
+                        Console.WriteLine("Optiune invalida.");
+                        break;
+                }
+            }
         }
     }
     

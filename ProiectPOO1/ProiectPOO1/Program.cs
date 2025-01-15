@@ -1,3 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using ProiectPOO1;
 
-Console.WriteLine("Hello, World!");
+namespace ProiectPoo;
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        Catalog catalog = new Catalog();
+        while(true){
+            Console.WriteLine("Selecteaza perspectiva:");
+            Console.WriteLine("1. Student");
+            Console.WriteLine("2. Profesor");
+            Console.WriteLine("0. Iesire");
+
+            string optiune = Console.ReadLine();
+    }
+}
